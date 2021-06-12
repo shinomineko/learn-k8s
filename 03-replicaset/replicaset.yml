@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: hello-replicaset
+  labels:
+    app: hello
+spec:
+  template:
+    metadata:
+      name: hello-pod
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: hello
+          image: shinomineko/hello-service
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello
